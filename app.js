@@ -41,7 +41,7 @@ app.post('/send', (req, res) => {
     res.render('contact', {msg: '<div class="alert alert-success">Email sent successfully!</div>'})
 });
 
-async function sendMail(subject, message)
+function sendMail(subject, message)
 {
     // create reusable transporter object using the default SMTP transport
     let transporter = nodemailer.createTransport({
@@ -54,7 +54,7 @@ async function sendMail(subject, message)
     });
   
     // send mail with defined transport object
-    let info = await transporter.sendMail({
+    let info = transporter.sendMail({
       from: '"Nodemailer Contact Test 👻" <omer@ayicik.net>', // sender address
       to: "inkilap28@gmail.com", // list of receivers
       subject: subject, // Subject line
