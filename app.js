@@ -7,6 +7,14 @@ const port = 3000;
 
 const app = express();
 
+// view Engine Setup
+app.engine('handlebars', exphbs());
+app.set('view engine', 'handlebars');
+
+// Body parser middleware
+app.use(bodyParser.urlencoded({ extended: false}));
+app.use(bodyParser.json());
+
 app.get('/', (req, res) => {
     res.send('Welcome');
 });
